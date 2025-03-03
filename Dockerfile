@@ -1,5 +1,10 @@
 FROM r-base:latest
 
+RUN uname -p
+RUN echo $(uname -p)
+RUN uname -a
+RUN echo $(uname -a)
+
 WORKDIR /backend_code
 
 LABEL org.opencontainers.image.source=https://github.com/timothee-bacri/Planting-Tools-backend
