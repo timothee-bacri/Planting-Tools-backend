@@ -1,5 +1,7 @@
 FROM r-base:latest
 
+RUN uname -i
+
 WORKDIR /backend_code
 
 LABEL org.opencontainers.image.source=https://github.com/timothee-bacri/Planting-Tools-backend
