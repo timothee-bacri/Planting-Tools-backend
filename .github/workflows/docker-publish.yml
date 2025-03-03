@@ -5,14 +5,14 @@ on:
     - cron: '0 0 * * MON'
   push:
     branches:
-      - master
+      - main
     paths:
       - ".github/workflows/docker-publish.yml"
       - "Dockerfile"
       - "DESCRIPTION"
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - ".github/workflows/docker-publish.yml"
       - "Dockerfile"
