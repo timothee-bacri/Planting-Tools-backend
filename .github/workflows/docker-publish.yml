@@ -85,6 +85,9 @@ jobs:
     #       - linux/arm64 # rocker/shiny-verse images only available on amd64
 
     steps:
+
+      - name: Convert IMAGE_NAME to lowercase
+        run: echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
       
       - name: Checkout repository
         uses: actions/checkout@v4
