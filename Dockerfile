@@ -1,9 +1,13 @@
 FROM r-base:latest
 
-RUN uname -p
-RUN echo $(uname -p)
 RUN uname -a
-RUN echo $(uname -a)
+RUN uname -m
+RUN uname -n
+RUN uname -o
+RUN uname -p
+RUN uname -r
+RUN uname -s
+RUN uname -v
 
 WORKDIR /backend_code
 
