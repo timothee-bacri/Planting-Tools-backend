@@ -1,14 +1,5 @@
 FROM r-base:latest
 
-RUN uname -a
-RUN uname -m
-RUN uname -n
-RUN uname -o
-RUN uname -p
-RUN uname -r
-RUN uname -s
-RUN uname -v
-
 WORKDIR /backend_code
 
 LABEL org.opencontainers.image.source=https://github.com/timothee-bacri/Planting-Tools-backend
@@ -48,7 +39,7 @@ RUN apt-get update && \
 
 # Miniconda https://docs.anaconda.com/miniconda/
 RUN mkdir -p "${CONDA_PATH}"
-RUN arch=$(uname -p) && wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${arch}.sh" -O "${CONDA_PATH}/miniconda.sh"
+RUN arch=$(uname -m) && wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${arch}.sh" -O "${CONDA_PATH}/miniconda.sh"
 RUN bash "${CONDA_PATH}/miniconda.sh" -b -u -p "${CONDA_PATH}"
 RUN rm -f "${CONDA_PATH}/miniconda.sh"
 
