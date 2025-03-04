@@ -53,7 +53,7 @@ RUN apt update && \
 # RUN Rscript -e "install.packages('remotes', lib = normalizePath(Sys.getenv('R_LIBS_USER')), repos = 'https://cran.rstudio.com/')"
 
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly
-COPY DESCRIPTION DESCRIPTION
+COPY DESCRIPTION .
 RUN date +%Y-%m && \
     Rscript -e "install.packages('remotes')" && \
     Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
