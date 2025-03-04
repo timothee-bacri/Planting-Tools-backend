@@ -30,7 +30,7 @@ RUN apt-get update && \
     # For gifsky
     cargo xz-utils \
     # For convenience
-    nano man-db curl cron finger \
+    nano man-db curl cron finger bind9-utils \
     # For backend (plumber package)
     libsodium-dev \
     # Generate SSH key for usage with git
