@@ -70,6 +70,8 @@ ENV RETICULATE_CONDA="${CONDA_PATH}/bin/conda"
 # Initialize dgpsi, and say yes to all prompts
 RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
 
+ENV PORT_PLUMBER=40000
+
 # Run plumber
 CMD if [ -f /backend_code/backend/trigger_plumber_for_dev.R ]; then \
       Rscript -e /backend_code/backend/trigger_plumber_for_dev.R; \
