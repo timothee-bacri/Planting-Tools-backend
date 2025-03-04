@@ -74,7 +74,7 @@ ENV PORT_PLUMBER=40000
 
 # Run plumber
 CMD if [ -f /backend_code/backend/trigger_plumber_for_dev.R ]; then \
-      Rscript -e /backend_code/backend/trigger_plumber_for_dev.R; \
+      Rscript /backend_code/backend/trigger_plumber_for_dev.R; \
     else \
       echo "/backend_code/backend/trigger_plumber_for_dev.R not found, doing nothing" && \
       tail -f /dev/null; \
