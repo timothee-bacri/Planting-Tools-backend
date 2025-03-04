@@ -57,7 +57,8 @@ Imports:
   dgpsi,
   testthat,
   pkgload,
-  devtools
+  devtools,
+  plumber
 Remotes:
   https://github.com/mingdeyu/dgpsi-R.git,
   https://github.com/mbinois/RRembo.git
