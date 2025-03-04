@@ -1,0 +1,21 @@
+services:
+  backend:
+    image: ghcr.io/timothee-bacri/planting-tools-backend
+    container_name: backend
+    volumes:
+      - /path/to/Planting-Tools:/backend_code:ro
+    environment:
+      PORT_PLUMBER: 40000
+    ports:
+      - 40000:40000
+    networks:
+      - backend
+
+  #backend1:
+    #container_name: backend1
+    #extends: backend
+    #ports:
+    #  - 40001:40000
+
+networks:
+  backend:
