@@ -25,6 +25,8 @@ RUN apt-get update && \
     libgsl-dev libglu1-mesa \
     # For dgpsi
     libtiff-dev libjpeg-dev \
+    # needed to install dgpsi via devtools for some reason
+    libtool automake \
     # For gifsky
     cargo xz-utils \
     # For convenience
