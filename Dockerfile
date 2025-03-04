@@ -50,7 +50,8 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 COPY DESCRIPTION .
 RUN date +%Y-%m && \
     Rscript -e "install.packages('remotes')" && \
-    Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
+    Rscript -e "install.packages('dgpsi')"
+    #Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
 RUN rm -f DESCRIPTION
 
 # Make conda command available to all
@@ -60,8 +61,10 @@ ARG COMMAND_EXPORT_PATH_BASHRC="export PATH=\"${CONDA_PATH}/bin:${PATH_DOLLAR}\"
 RUN for userpath in /home/*/ /root/; do \
         echo "${COMMAND_EXPORT_PATH_BASHRC}" | tee -a "${userpath}/.bashrc"; \
     done
-# Tell all R sessions about it
+
+# Tell all R sessions about it (see details in reticulate:::find_conda())
 RUN echo "options(reticulate.conda_binary = '${CONDA_PATH}/bin/conda')" | tee -a "$R_HOME/etc/Rprofile.site"
+ENV RETICULATE_CONDA="${CONDA_PATH}/bin/conda"
 
 # Initialize dgpsi, and say yes to all prompts
 RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
