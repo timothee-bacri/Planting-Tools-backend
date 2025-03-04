@@ -24,7 +24,7 @@ RUN apt-get update && \
     # For RRembo, it depends on eaf
     libgsl-dev libglu1-mesa \
     # For dgpsi
-    libtiff-dev libjpeg-dev \
+    libtiff-dev libjpeg-dev git \
     # needed to install dgpsi via devtools for some reason
     libtool automake \
     # For gifsky
