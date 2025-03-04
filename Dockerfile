@@ -50,11 +50,11 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly
 COPY DESCRIPTION .
-RUN date +%Y-%m && \
+#RUN date +%Y-%m && \
     #Rscript -e "install.packages('remotes')" && \
     #Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
-    Rscript -e "install.packages('devtools')" && \
-    Rscript -e "devtools::install_github('mingdeyu/dgpsi-R')"
+    #Rscript -e "install.packages('devtools')" && \
+    #Rscript -e "devtools::install_github('mingdeyu/dgpsi-R')"
 RUN rm -f DESCRIPTION
 
 # Make conda command available to all
@@ -70,7 +70,7 @@ RUN echo "options(reticulate.conda_binary = '${CONDA_PATH}/bin/conda')" | tee -a
 ENV RETICULATE_CONDA="${CONDA_PATH}/bin/conda"
 
 # Initialize dgpsi, and say yes to all prompts
-RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
+#RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
 
 # Run plumber
 CMD if [ -f /backend_code/backend/trigger_plumber_for_dev.R ]; then \
