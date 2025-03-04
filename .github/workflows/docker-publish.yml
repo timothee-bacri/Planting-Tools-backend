@@ -126,5 +126,5 @@ jobs:
           pull: true
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
