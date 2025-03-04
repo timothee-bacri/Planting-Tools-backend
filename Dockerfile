@@ -49,9 +49,8 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly
 COPY DESCRIPTION .
 RUN date +%Y-%m && \
-    Rscript -e "install.packages('remotes', 'devtools')" && \
-    Rscript -e "devtools::install_github('mingdeyu/dgpsi-R')"
-    #Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
+    Rscript -e "install.packages('remotes')" && \
+    Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
 RUN rm -f DESCRIPTION
 
 # Make conda command available to all
