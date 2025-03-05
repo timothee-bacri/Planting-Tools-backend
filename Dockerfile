@@ -72,6 +72,9 @@ RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
 
 ENV PORT_PLUMBER=40000
 
+HEALTHCHECK --interval=5m --timeout=3s --start-period=10s \
+  CMD curl -f http://localhost:${PORT_PLUMBER}/health || exit 1
+
 # Run plumber
 CMD if [ -f /backend_code/backend/trigger_plumber_for_dev.R ]; then \
       Rscript /backend_code/backend/trigger_plumber_for_dev.R; \
