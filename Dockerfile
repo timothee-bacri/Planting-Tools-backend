@@ -1,6 +1,6 @@
 FROM r-base:latest
 
-WORKDIR /backend_code
+WORKDIR /Planting-Tools
 
 LABEL org.opencontainers.image.source=https://github.com/timothee-bacri/Planting-Tools-backend
 
@@ -76,9 +76,9 @@ HEALTHCHECK --interval=5m --timeout=3s --start-period=10s \
   CMD curl -f http://localhost:${PORT_PLUMBER}/health || exit 1
 
 # Run plumber
-CMD if [ -f /backend_code/backend/trigger_plumber_for_dev.R ]; then \
-      Rscript /backend_code/backend/trigger_plumber_for_dev.R; \
+CMD if [ -f /Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R ]; then \
+      Rscript /Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R; \
     else \
-      echo "/backend_code/backend/trigger_plumber_for_dev.R not found, doing nothing" && \
+      echo "/Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R not found, doing nothing" && \
       tail -f /dev/null; \
     fi
