@@ -10,7 +10,6 @@ Imports:
   leaflet,
   leaflet.extras,
   plotly,
-  glue,
   httr,
   bslib,
   shinycssloaders,
