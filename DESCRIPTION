@@ -8,7 +8,18 @@ Imports:
   shiny.fluent,
   reactlog,
   leaflet,
+  leaflet.extras,
+  plotly,
+  glue,
+  httr,
+  bslib,
+  shinycssloaders,
+  jsonlite,
+  units,
+  plotly,
   sf,
+  uuid,
+  geojsonsf,
   ggplot2,
   geosphere,
   feather,
@@ -58,9 +69,7 @@ Imports:
   testthat,
   pkgload,
   devtools,
-  plumber,
-  uuid,
-  geojsonsf
+  plumber
 Remotes:
   https://github.com/mingdeyu/dgpsi-R.git,
   https://github.com/mbinois/RRembo.git
