@@ -6,13 +6,15 @@ Imports:
   shiny,
   shinyjqui,
   shiny.fluent,
+  shinyWidgets,
+  shinycssloaders,
   reactlog,
   leaflet,
   leaflet.extras,
   plotly,
+  glue,
   httr,
   bslib,
-  shinycssloaders,
   jsonlite,
   units,
   plotly,
@@ -37,7 +39,6 @@ Imports:
   ggmap,
   MASS,
   mgcv,
-  shinyWidgets,
   truncnorm,
   GGally,
   purrr,
@@ -68,7 +69,10 @@ Imports:
   testthat,
   pkgload,
   devtools,
-  plumber
+  plumber,
+  manipulateWidget,
+  leaflet.minicharts,
+  raster
 Remotes:
   https://github.com/mingdeyu/dgpsi-R.git,
   https://github.com/mbinois/RRembo.git
