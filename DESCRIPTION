@@ -54,6 +54,7 @@ Imports:
   sensitivity,
   progressr,
   doFuture,
+  future.apply,
   promises,
   concordance,
   BASS,
