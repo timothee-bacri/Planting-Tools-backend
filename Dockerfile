@@ -14,7 +14,6 @@ ARG CONDA_ENV_PATH=${CONDA_PATH}/envs/${DGPSI_FOLDER_NAME}
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get -y upgrade && \
     apt-get -y --no-install-recommends install \
     libcurl4-openssl-dev \
     # packages (devtools, dgpsi)
@@ -35,6 +34,7 @@ RUN apt-get update && \
     libsodium-dev \
     # Generate SSH key for usage with git
     openssh-client && \
+    apt-get -y upgrade && \
     apt-get -y clean && \
     apt-get -y autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/*
