@@ -55,10 +55,13 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 #    Rscript -e "remotes::install_deps(repos = 'https://cran.rstudio.com')"
 #RUN rm -f DESCRIPTION
 
+COPY install_packages_tim.R install_packages_tim.R
+COPY install_packages_ivis.R install_packages_ivis.R
 RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
     Rscript "install_packages_tim.R" && \
     Rscript "install_packages_ivis.R"
+RUN rm -f install_packages_tim install_packages_ivis
 
 # Make conda command available to all
 ARG PATH_DOLLAR='$PATH' # do not interpolate $PATH, this is meant to update path in .bashrc
