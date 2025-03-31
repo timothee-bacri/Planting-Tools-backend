@@ -34,6 +34,10 @@ RUN apt-get update && \
     libsodium-dev \
     # For magick (downscaling)
     libmagick++-dev \
+    # For rgl (dependency)
+    libgl1-mesa-dev libglu1-mesa-dev \
+    # For elliptic (dependency)
+    pari-gp \
     # Generate SSH key for usage with git
     openssh-client && \
     apt-get -y upgrade && \
