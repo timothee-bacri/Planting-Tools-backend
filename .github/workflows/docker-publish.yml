@@ -72,19 +72,22 @@ jobs:
   #         tags: Uni-of-Exeter/Planting-Tools:shiny-server-arm64-latest
   #         labels: ${{ steps.meta.outputs.labels }}
     
-  backend:
+  build:
     # needs: official-shiny
-    runs-on: ubuntu-24.04-arm
+    strategy:
+      fail-fast: false # stop GH from cancelling all matrix builds if one fails
+      matrix:
+        # https://docs.github.com/en/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+        include:
+          - os: ubuntu-latest
+            platform: amd64
+          - os: ubuntu-24.04-arm
+            platform: arm64
+    
+    runs-on: ${{ matrix.os }}
     permissions:
       contents: read
       packages: write
-      
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     platform:
-    #       # - linux/amd64
-    #       - linux/arm64 # rocker/shiny-verse images only available on amd64
 
     steps:
 
@@ -115,6 +118,14 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -122,11 +133,12 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile
-          #platforms: linux/arm64
-          build-args: DGPSI_FOLDER_NAME=${{ env.DGPSI_FOLDER_NAME }}
-          pull: true
+          file: Dockerfile
           push: true
-          tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          pull: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-${{ matrix.platform }}
+          #platforms: linux/arm64
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: DGPSI_FOLDER_NAME=${{ env.DGPSI_FOLDER_NAME }}
+          cache-from: type=registry,ref=${{ steps.meta.outputs.tags }}
+          cache-to: type=inline
