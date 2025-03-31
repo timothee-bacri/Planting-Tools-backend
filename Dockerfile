@@ -83,10 +83,15 @@ ENV PORT_PLUMBER=40000
 HEALTHCHECK --interval=5m --timeout=3s --start-period=10s \
   CMD curl -f http://localhost:${PORT_PLUMBER}/health || exit 1
 
-# Run plumber
-CMD if [ -f /Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R ]; then \
-      Rscript /Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R; \
-    else \
-      echo "/Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R not found, doing nothing" && \
-      tail -f /dev/null; \
-    fi
+# Run plumber in Exec form (https://docs.docker.com/reference/build-checks/json-args-recommended/)
+COPY --chmod=755 <<EOT /cmd.bash
+#!/usr/bin/env bash
+if [ -f /Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R ]; then \
+  Rscript /Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R; \
+else \
+  echo "/Planting-Tools/ShinyForestry/backend/trigger_plumber_for_dev.R not found, doing nothing" && \
+  tail -f /dev/null; \
+fi
+EOT
+CMD ["/cmd.bash"]
+
