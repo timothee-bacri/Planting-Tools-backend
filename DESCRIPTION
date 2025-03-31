@@ -73,7 +73,16 @@ Imports:
   plumber,
   manipulateWidget,
   leaflet.minicharts,
-  raster
+  raster,
+  terra,
+  sf,
+  mesoclimAddTrees,
+  lubridate,
+  mesoclim,
+  gifski,
+  gganimate,
+  exactextractr,
+  dplyr
 Remotes:
   https://github.com/mingdeyu/dgpsi-R.git,
   https://github.com/mbinois/RRembo.git
