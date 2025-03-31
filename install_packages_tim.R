@@ -70,6 +70,9 @@ packages <- c("adaptMCMC",
               "viridis",
               "webshot",
               "zipfR")
-pak::pkg_install(packages,
-                 ask = FALSE,
-                 upgrade = TRUE)
+available <- sapply(packages, require, character.only = TRUE)
+if (length(packages[!available] > 0) {
+  pak::pkg_install(packages[!available],
+                   ask = FALSE,
+                   upgrade = FALSE)
+}
