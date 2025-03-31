@@ -8,9 +8,11 @@ packages <- c("exactextractr",
               "sf",
               "terra",
               "tidyr")
-available <- sapply(packages, require, character.only = TRUE)
-if (length(packages[!available] > 0)) {
-  pak::pkg_install(packages[!available],
+to_install <- sapply(packages, function(x) {
+  return(system.file(package = x) == ""))
+})
+if (any(to_install)) {
+  pak::pkg_install(packages[to_install],
                    ask = FALSE,
                    upgrade = FALSE)
 }
