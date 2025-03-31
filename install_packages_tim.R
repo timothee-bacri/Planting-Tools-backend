@@ -71,7 +71,7 @@ packages <- c("adaptMCMC",
               "webshot",
               "zipfR")
 to_install <- sapply(packages, function(x) {
-  return(system.file(package = x) == ""))
+  return(system.file(package = x) == "")
 })
 if (any(to_install)) {
   pak::pkg_install(packages[to_install],
