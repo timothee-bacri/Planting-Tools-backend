@@ -8,7 +8,7 @@ packages <- c("dplyr",
               "sf",
               "terra")
 available <- sapply(packages, require, character.only = TRUE)
-if (length(packages[!available] > 0) {
+if (length(packages[!available] > 0)) {
   pak::pkg_install(packages[!available],
                    ask = FALSE,
                    upgrade = FALSE)
