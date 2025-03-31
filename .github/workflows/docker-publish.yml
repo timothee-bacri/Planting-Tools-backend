@@ -18,6 +18,7 @@ on:
       - ".github/workflows/docker-publish.yml"
       - "Dockerfile"
       - "DESCRIPTION"
+      - "install_packages_*.R"
     types:
       - closed
   workflow_dispatch:
