@@ -64,7 +64,7 @@ RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
     for packages_file in install_packages_*.R; do \
         ls -alh && \
-        Rscript packages_file$; \
+        Rscript "$packages_file"; \
     done && \
     rm -rf /tmp/*
 RUN rm -f install_packages_*
