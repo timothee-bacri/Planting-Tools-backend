@@ -32,6 +32,8 @@ RUN apt-get update && \
     nano man-db curl cron finger bind9-dnsutils \
     # For backend (plumber package)
     libsodium-dev \
+    # For magick (downscaling)
+    libmagick++-dev \
     # Generate SSH key for usage with git
     openssh-client && \
     apt-get -y upgrade && \
