@@ -57,7 +57,7 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 
 RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
-    Rscript "install_packages_tim.R.R" && \
+    Rscript "install_packages_tim.R" && \
     Rscript "install_packages_ivis.R"
 
 # Make conda command available to all
