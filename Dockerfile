@@ -94,10 +94,10 @@ RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
 RUN ls -ahlR /etc/Image*
 # RUN sed -E -i 's|  <policy domain="resource" name="disk" value="[0-9]GiB"/>|  <policy domain="resource" name="disk" value="5GiB"/>|' /etc/ImageMagick-6/policy.xml
 
-ENV PORT_PLUMBER=40000
+ENV API_PORT=40000
 
 HEALTHCHECK --interval=5m --timeout=3s --start-period=10s \
-  CMD curl -f http://localhost:${PORT_PLUMBER}/health || exit 1
+  CMD curl -f http://localhost:${API_PORT}/health || exit 1
 
 # Run plumber in Exec form (https://docs.docker.com/reference/build-checks/json-args-recommended/)
 COPY --chmod=755 <<EOT /cmd.bash
