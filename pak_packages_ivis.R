@@ -11,4 +11,4 @@ packages <- c(packages,
               "github::jrmosedale/mesoclimAddTrees",
               "sf",
               "terra",
-              "tidyr")
+              "tidyverse")
