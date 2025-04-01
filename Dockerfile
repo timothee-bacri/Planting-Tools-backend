@@ -70,7 +70,7 @@ COPY pak_packages_*.R .
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly by updating DESCRIPTION
 RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
-    Rscript -e "files <- list.files(pattern = 'pak_packages_.*R', full.names = TRUE);sapply(files, source);pak::install_pkg(unique(packages), ask = FALSE)" && \
+    Rscript -e "files <- list.files(pattern = 'pak_packages_.*R', full.names = TRUE);sapply(files, source);pak::pkg_install(unique(packages), ask = FALSE)" && \
     rm -rf /tmp/*
 RUN rm -f pak_packages_*.R
 
