@@ -1,4 +1,8 @@
-packages <- c("adaptMCMC",
+if (isFALSE(exists("packages")) {
+  packages <- c()
+}
+packages <- c(packages,
+              "adaptMCMC",
               "arrow",
               "BASS",
               "bslib",
@@ -70,11 +74,3 @@ packages <- c("adaptMCMC",
               "viridis",
               "webshot",
               "zipfR")
-to_install <- sapply(packages, function(x) {
-  return(system.file(package = x) == "")
-})
-if (any(to_install)) {
-  pak::pkg_install(packages[to_install],
-                   ask = FALSE,
-                   upgrade = FALSE)
-}
