@@ -66,16 +66,13 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 #RUN rm -f DESCRIPTION
 
 # Install packages while making the image small
-COPY install_packages_* .
+COPY pak_packages_*.R .
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly by updating DESCRIPTION
 RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
-    for packages_file in install_packages_*.R; do \
-        ls -alh && \
-        Rscript "$packages_file"; \
-    done && \
+    Rscript -e "files <- list.files(pattern = 'pak_packages_.*R', full.names = TRUE);sapply(source, files);pak::install_pkg(unique(packages), ask = FALSE)" && \
     rm -rf /tmp/*
-RUN rm -f install_packages_*
+RUN rm -f pak_packages_*.R
 
 # Make conda command available to all
 ARG PATH_DOLLAR='$PATH' # do not interpolate $PATH, this is meant to update path in .bashrc
