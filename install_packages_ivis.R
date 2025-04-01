@@ -1,4 +1,8 @@
-packages <- c("exactextractr",
+if (isFALSE(exists("packages")) {
+  packages <- c()
+}
+packages <- c(packages,
+              "exactextractr",
               "gganimate",
               "gifski",
               "lubridate",
@@ -8,11 +12,3 @@ packages <- c("exactextractr",
               "sf",
               "terra",
               "tidyr")
-to_install <- sapply(packages, function(x) {
-  return(system.file(package = x) == "")
-})
-if (any(to_install)) {
-  pak::pkg_install(packages[to_install],
-                   ask = FALSE,
-                   upgrade = FALSE)
-}
