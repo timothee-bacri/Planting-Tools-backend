@@ -1,4 +1,4 @@
-if (isFALSE(exists("packages")) {
+if (isFALSE(exists("packages"))) {
   packages <- c()
 }
 packages <- c(packages,
