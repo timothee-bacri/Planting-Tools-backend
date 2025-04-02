@@ -1,0 +1,14 @@
+Imports:
+  exactextractr,
+  gganimate,
+  gifski,
+  lubridate,
+  magick,
+  mesoclim,
+  mesoclimAddTrees,
+  sf,
+  terra,
+  tidyr
+Remotes:
+  https://github.com/ilyamaclean/mesoclim.git,
+  https://github.com/jrmosedale/mesoclimAddTrees.git
