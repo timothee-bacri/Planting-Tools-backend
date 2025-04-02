@@ -9,16 +9,14 @@ on:
     paths:
       - ".github/workflows/docker-publish.yml"
       - "Dockerfile"
-      # - "DESCRIPTION"
-      - "pak_packages_*.R"
+      - "DESCRIPTION_*"
   pull_request:
     branches:
       - main
     paths:
       - ".github/workflows/docker-publish.yml"
       - "Dockerfile"
-      # - "DESCRIPTION"
-      - "pak_packages_*.R"
+      - "DESCRIPTION_*"
     types:
       - closed
   workflow_dispatch:
