@@ -1,4 +1,6 @@
 # progress is required on Ubuntu: https://github.com/tidyverse/vroom/issues/538
+Package: randomname
+Version: 0.1
 Imports:
   arrow,
   BASS,
