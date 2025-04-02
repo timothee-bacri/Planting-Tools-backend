@@ -1,3 +1,5 @@
+Package: randomname
+Version: 0.1
 Imports:
   exactextractr,
   gganimate,
