@@ -91,8 +91,8 @@ RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
 
 # Downscaling uses all the magick disk cache -> increase it
 # https://stackoverflow.com/questions/31407010/cache-resources-exhausted-imagemagick
-RUN ls -ahlR /etc/Image*
-# RUN sed -E -i 's|  <policy domain="resource" name="disk" value="[0-9]GiB"/>|  <policy domain="resource" name="disk" value="5GiB"/>|' /etc/ImageMagick-6/policy.xml
+RUN sed -E -i 's|  <policy domain="resource" name="disk" value="[0-9]GiB"/>|  <policy domain="resource" name="disk" value="5GiB"/>|' /etc/ImageMagick-*/policy.xml
+RUN grep '  <policy domain="resource" name="disk" value=' /etc/ImageMagick-*/policy.xml
 
 ENV API_PORT=40000
 
