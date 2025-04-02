@@ -55,9 +55,6 @@ RUN arch=$(uname -m) && wget "https://repo.anaconda.com/miniconda/Miniconda3-lat
 RUN bash "${CONDA_PATH}/miniconda.sh" -b -u -p "${CONDA_PATH}"
 RUN rm -f "${CONDA_PATH}/miniconda.sh"
 
-# Install packages while making the image small, and do not reinstall them if they are already there and updated
-# RUN Rscript -e "install.packages('remotes', lib = normalizePath(Sys.getenv('R_LIBS_USER')), repos = 'https://cran.rstudio.com/')"
-
 COPY DESCRIPTION_* .
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly by updating DESCRIPTION
 RUN date +%Y-%m && \
