@@ -63,7 +63,7 @@ RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
     for description_file in DESCRIPTION_*; do \
         cp $description_file DESCRIPTION && \
-        Rscript -e "pak::local_install_dev_deps()"; \
+        Rscript -e "pak::local_install_dev_deps(upgrade = TRUE)"; \
     done && \
     rm -rf /tmp/*
 RUN rm -f DESCRIPTION_*
