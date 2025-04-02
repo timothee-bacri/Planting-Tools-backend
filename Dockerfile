@@ -33,7 +33,7 @@ RUN apt-get update && \
     # For backend (plumber package)
     libsodium-dev \
     # For magick (downscaling)
-    libmagick++-dev \
+    libmagick++-dev gsfonts \
     # For rgl (dependency)
     libgl1-mesa-dev libglu1-mesa-dev \
     # For elliptic (dependency)
@@ -42,6 +42,8 @@ RUN apt-get update && \
     gdal-bin \
     # For keyring (dependency)
     libsecret-1-dev \
+    # For knitr, markdown
+    pandoc \
     # Generate SSH key for usage with git
     openssh-client && \
     apt-get -y upgrade && \
