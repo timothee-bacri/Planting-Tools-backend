@@ -10,6 +10,7 @@ Imports:
   curl,
   devtools,
   dgpsi,
+  DiceOptim,
   doFuture,
   dplyr,
   exactextractr,
