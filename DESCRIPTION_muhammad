@@ -63,8 +63,9 @@ Imports:
   viridis,
   writexl
 Remotes:
-  https://github.com/mingdeyu/dgpsi-R.git,
-  https://github.com/mbinois/RRembo.git,
-  https://github.com/ilyamaclean/mesoclim.git,
-  https://github.com/jrmosedale/mesoclimAddTrees.git,
-	DiceOptim=url::https://cran.r-project.org/src/contrib/Archive/DiceOptim/DiceOptim_2.1.1.tar.gz
+  dgpsi=git::https://github.com/mingdeyu/dgpsi-R.git,
+  RRembo=git::https://github.com/mbinois/RRembo.git,
+  mesoclim=git::https://github.com/ilyamaclean/mesoclim.git,
+  mesoclimAddTrees=git::https://github.com/timothee-bacri/mesoclimAddTrees.git,
+  DiceOptim=url::https://cran.r-project.org/src/contrib/Archive/DiceOptim/DiceOptim_2.1.1.tar.gz
+Comment: Once https://github.com/jrmosedale/mesoclimAddTrees/pull/1 is merged, replace https://github.com/timothee-bacri/mesoclimAddTrees.git with https://github.com/jrmosedale/mesoclimAddTrees.git
