@@ -13,7 +13,6 @@ Imports:
 	data.table,
 	devtools,
 	dgpsi,
-	DiceOptim,
 	doFuture,
 	dplyr,
 	eaf,
