@@ -12,6 +12,6 @@ Imports:
   terra,
   tidyr
 Remotes:
-  https://github.com/ilyamaclean/mesoclim.git,
-  https://github.com/timothee-bacri/mesoclimAddTrees.git
+  mesoclim=git::https://github.com/ilyamaclean/mesoclim.git,
+  mesoclimAddTrees=git::https://github.com/timothee-bacri/mesoclimAddTrees.git
 Comment: Once https://github.com/jrmosedale/mesoclimAddTrees/pull/1 is merged, replace https://github.com/timothee-bacri/mesoclimAddTrees.git with https://github.com/jrmosedale/mesoclimAddTrees.git
