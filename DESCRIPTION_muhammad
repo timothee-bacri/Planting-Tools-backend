@@ -67,5 +67,5 @@ Remotes:
   RRembo=git::https://github.com/mbinois/RRembo.git,
   DiceOptim=url::https://cran.r-project.org/src/contrib/Archive/DiceOptim/DiceOptim_2.1.1.tar.gz,
   mesoclim=git::https://github.com/timothee-bacri/mesoclim.git,
-  mesoclimAddTrees=git::https://github.com/timothee-bacri/mesoclimAddTrees.git
+  mesoclimAddTrees=git::https://github.com/timothee-bacri/mesoclimAddTrees.git@dont-depend-on-ilyamaclean-mesoclim
 Comment: Once https://github.com/jrmosedale/mesoclimAddTrees/pull/1 and https://github.com/ilyamaclean/mesoclim/pull/3 are merged, replace https://github.com/timothee-bacri/mesoclimAddTrees.git with https://github.com/jrmosedale/mesoclimAddTrees.git, and https://github.com/timothee-bacri/mesoclim.git with https://github.com/ilyamaclean/mesoclim.git
