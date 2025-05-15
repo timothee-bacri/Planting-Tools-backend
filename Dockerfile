@@ -63,11 +63,12 @@ RUN date +%Y-%m && \
     Rscript -e "install.packages('pak')" && \
     # Rscript -e "pak::pkg_install('github::mingdeyu/dgpsi-R')" && \
     for description_file in DESCRIPTION_*; do \
+        echo "NOW WORKING WITH THE DESCRIPTION FILE WITH NAME $description_file" && \
         cp $description_file DESCRIPTION && \
         Rscript -e "pak::local_install_dev_deps(upgrade = TRUE)"; \
+        rm -f DESCRIPTION; \
     done && \
     rm -rf /tmp/*
-RUN rm -f DESCRIPTION_*
 
 # Make conda command available to all
 ARG PATH_DOLLAR='$PATH' # do not interpolate $PATH, this is meant to update path in .bashrc
