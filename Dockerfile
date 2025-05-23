@@ -25,7 +25,9 @@ RUN apt-get -y --no-install-recommends install \
 RUN apt-get -y --no-install-recommends install \
     libproj-dev cmake
 RUN apt-get -y --no-install-recommends install \
-    libgdal-dev libharfbuzz-dev
+    libgdal-dev
+RUN apt-get -y --no-install-recommends install \
+    libharfbuzz-dev
 RUN apt-get -y --no-install-recommends install \
     libfribidi-dev
 # Specific to arm64
