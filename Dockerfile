@@ -13,40 +13,57 @@ ARG DGPSI_FOLDER_NAME
 ARG CONDA_ENV_PATH=${CONDA_PATH}/envs/${DGPSI_FOLDER_NAME}
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-    apt-get -y --no-install-recommends install \
-    libcurl4-openssl-dev \
-    # packages (devtools, dgpsi)
-    libfontconfig1-dev libxml2-dev libudunits2-dev libssl-dev libproj-dev cmake libgdal-dev libharfbuzz-dev libfribidi-dev \
-    # Specific to arm64
-    libgit2-dev \
-    # For RRembo, it depends on eaf
-    libgsl-dev libglu1-mesa \
-    # For dgpsi
-    libtiff-dev libjpeg-dev git \
-    # needed to install dgpsi via devtools for some reason
-    libtool automake \
-    # For gifsky
-    cargo xz-utils \
-    # For convenience
-    nano man-db curl cron finger bind9-dnsutils \
-    # For backend (plumber package)
-    libsodium-dev \
-    # For magick (downscaling)
-    libmagick++-dev gsfonts \
-    # For rgl (dependency)
-    libgl1-mesa-dev libglu1-mesa-dev \
-    # For elliptic (dependency)
-    pari-gp \
-    # For sf, terra
-    gdal-bin \
-    # For keyring (dependency)
-    libsecret-1-dev \
-    # For knitr, markdown
-    pandoc \
-    # Generate SSH key for usage with git
-    openssh-client && \
-    apt-get -y upgrade && \
+# Package installation is split to avoid dependency issues
+RUN apt-get update
+RUN apt-get -y --no-install-recommends install \
+    libcurl4-openssl-dev
+# packages (devtools, dgpsi)
+RUN apt-get -y --no-install-recommends install \
+    libfontconfig1-dev libxml2-dev libudunits2-dev libssl-dev libproj-dev cmake libgdal-dev libharfbuzz-dev libfribidi-dev
+# Specific to arm64
+RUN apt-get -y --no-install-recommends install
+    libgit2-dev
+# For RRembo, it depends on eaf
+RUN apt-get -y --no-install-recommends install \
+    libgsl-dev libglu1-mesa
+# For dgpsi
+RUN apt-get -y --no-install-recommends install \
+    libtiff-dev libjpeg-dev git
+# needed to install dgpsi via devtools for some reason
+RUN apt-get -y --no-install-recommends install \
+    libtool automake
+# For gifsky
+RUN apt-get -y --no-install-recommends install \
+    cargo xz-utils
+# For convenience
+RUN apt-get -y --no-install-recommends install \
+    nano man-db curl cron finger bind9-dnsutils
+# For backend (plumber package)
+RUN apt-get -y --no-install-recommends install \
+    libsodium-dev
+# For magick (downscaling)
+RUN apt-get -y --no-install-recommends install \
+    libmagick++-dev gsfonts
+# For rgl (dependency)
+RUN apt-get -y --no-install-recommends install \
+    libgl1-mesa-dev libglu1-mesa-dev
+# For elliptic (dependency)
+RUN apt-get -y --no-install-recommends install \
+    pari-gp
+# For sf, terra
+RUN apt-get -y --no-install-recommends install \
+    gdal-bin
+# For keyring (dependency)
+RUN apt-get -y --no-install-recommends install \
+    libsecret-1-dev
+# For knitr, markdown
+RUN apt-get -y --no-install-recommends install \
+    pandoc
+# Generate SSH key for usage with git
+RUN apt-get -y --no-install-recommends install \
+    openssh-client
+
+RUN apt-get -y upgrade && \
     apt-get -y clean && \
     apt-get -y autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/*
