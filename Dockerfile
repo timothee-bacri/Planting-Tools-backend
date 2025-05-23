@@ -16,6 +16,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Package installation is split to avoid dependency issues
 RUN apt-get update && \
     apt-get -y --no-install-recommends install \
+    # To download files
+    wget \
     libcurl4-openssl-dev \
     # For devtools and dgpsi
     libfontconfig1-dev libxml2-dev libudunits2-dev libssl-dev libproj-dev cmake libgdal-dev libharfbuzz-dev libfribidi-dev \
@@ -37,11 +39,11 @@ RUN apt-get update && \
     libmagick++-dev gsfonts \
     # For rgl (dependency)
     libgl1-mesa-dev libglu1-mesa-dev \
-    # For elliptic (dependency)
+    # For elliptic
     pari-gp \
     # For sf, terra
     gdal-bin \
-    # For keyring (dependency)
+    # For keyring
     libsecret-1-dev \
     # For knitr, markdown
     pandoc \
