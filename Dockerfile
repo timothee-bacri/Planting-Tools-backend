@@ -21,7 +21,7 @@ RUN apt-get -y --no-install-recommends install \
 RUN apt-get -y --no-install-recommends install \
     libfontconfig1-dev libxml2-dev libudunits2-dev libssl-dev libproj-dev cmake libgdal-dev libharfbuzz-dev libfribidi-dev
 # Specific to arm64
-RUN apt-get -y --no-install-recommends install
+RUN apt-get -y --no-install-recommends install \
     libgit2-dev
 # For RRembo, it depends on eaf
 RUN apt-get -y --no-install-recommends install \
