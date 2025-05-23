@@ -17,9 +17,17 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get -y --no-install-recommends install \
     libcurl4-openssl-dev
-# packages (devtools, dgpsi)
+# For devtools, dgpsi
 RUN apt-get -y --no-install-recommends install \
-    libfontconfig1-dev libxml2-dev libudunits2-dev libssl-dev libproj-dev cmake libgdal-dev libharfbuzz-dev libfribidi-dev
+    libfontconfig1-dev libxml2-dev
+RUN apt-get -y --no-install-recommends install \
+    libudunits2-dev libssl-dev
+RUN apt-get -y --no-install-recommends install \
+    libproj-dev cmake
+RUN apt-get -y --no-install-recommends install \
+    libgdal-dev libharfbuzz-dev
+RUN apt-get -y --no-install-recommends install \
+    libfribidi-dev
 # Specific to arm64
 RUN apt-get -y --no-install-recommends install \
     libgit2-dev
