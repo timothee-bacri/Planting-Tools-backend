@@ -86,9 +86,6 @@ RUN echo "options(reticulate.conda_binary = '${CONDA_PATH}/bin/conda')" | tee -a
 ENV RETICULATE_CONDA="${CONDA_PATH}/bin/conda"
 
 # Initialize dgpsi, and say yes to all prompts
-# with temporary fix
-RUN Rscript -e 'system(paste(reticulate::conda_binary(), "tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main"))'
-RUN Rscript -e 'system(paste(reticulate::conda_binary(), "tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r"))'
 RUN Rscript -e "readline<-function(prompt) {return('Y')};dgpsi::init_py()"
 
 # Downscaling uses all the magick disk cache -> increase it
