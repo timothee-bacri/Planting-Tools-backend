@@ -96,7 +96,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Set dgpsi folder name
-        run: echo "DGPSI_FOLDER_NAME=$(curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | grep "env_name *<-" | grep --invert-match "^\s*#" | grep --only-matching --perl-regexp 'dgp.*\d')" >> $GITHUB_ENV
+        run: echo "DGPSI_FOLDER_NAME=$(curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | grep 'env_name *<-' | grep --invert-match '^\s*#' | grep --only-matching --perl-regexp 'dgp.*\d')" >> $GITHUB_ENV
       
       ## https://github.com/docker/setup-qemu-action
       #- name: Set up QEMU
