@@ -1,11 +1,16 @@
 services:
-  backend:
+  backend0:
     image: ghcr.io/timothee-bacri/planting-tools-backend
     container_name: backend
+    environment:
+      # API_PORT: 40000 # Inner port, value included in logs
+      # API_HOST: "144.173.60.164"
+      # DIR_ROOT: /host_home/Shared # contains mesoclim_inputs
+      TZ: Europe/London # Time for logs
     volumes:
       - /path/to/Planting-Tools:/backend_code:ro
-    environment:
-      PORT_PLUMBER: 40000
+      - /Users/Shared/mesoclim_inputs:/host_home/Shared/mesoclim_inputs:ro # Mesoclim data for downscaling
+      # - ./backend0:/root/backend # User files and pre-processed data
     ports:
       - 40000:40000
     networks:
@@ -16,6 +21,8 @@ services:
     #extends: backend
     #ports:
     #  - 40001:40000
+    # environment:
+      # API_PORT: 40000
 
 networks:
   backend:
