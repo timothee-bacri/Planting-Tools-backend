@@ -9,6 +9,7 @@ Imports:
   mesoclim,
   mesoclimAddTrees,
   sf,
+  spacetime,
   terra,
   tidyr
 Remotes:
