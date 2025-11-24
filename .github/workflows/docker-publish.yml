@@ -38,7 +38,7 @@ jobs:
   #   
   #   steps:
   #     - name: Checkout repository
-  #       uses: actions/checkout@v5
+  #       uses: actions/checkout@v6
   #       with:
   #         repository: https://github.com/rstudio/shiny-server.git
   #         ref: master
@@ -88,7 +88,7 @@ jobs:
     steps:
       
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       
       - name: Set dgpsi folder name
         run: echo "DGPSI_FOLDER_NAME=$(curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | grep 'env_name *<-' | grep --invert-match '^\s*#' | grep --only-matching --perl-regexp 'dgp.*\d')" >> $GITHUB_ENV
