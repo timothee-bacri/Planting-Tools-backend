@@ -91,7 +91,29 @@ jobs:
         uses: actions/checkout@v6
       
       - name: Set dgpsi folder name
-        run: echo "DGPSI_FOLDER_NAME=$(curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | grep 'env_name *<-' | grep --invert-match '^\s*#' | grep --only-matching --perl-regexp 'dgp.*\d')" >> $GITHUB_ENV
+        run: |
+          # sed --silent '/devel/,$p'
+          # This prints all lines from the first line containing "devel" to the end of file.
+          #  -n, --quiet, --silent suppresses automatic printing
+          # /devel/,$ is the address range: first line matching /devel/ through last line ($)
+          # p prints those lines
+
+          # grep --max-count 1 --only-matching --perl-regexp '^((?!#).)*env_name.*$'
+          # finds the first line defining env_name (after "devel", thanks to `sed`) that does not contain a comment mark # (just in case)
+
+          # grep --only-matching "['\"].*['\"]"
+          # extracts the value in quotes assigned to env_name
+
+          # tr --delete "'" | tr --delete '"'
+          # deletes quotation marks (' and ")
+          
+          dgpsi_version_code=$(curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | \
+            sed --silent '/devel/,$p' | \
+            grep --max-count 1 --only-matching --perl-regexp '^((?!#).)*env_name.*$' | \
+            grep --only-matching "['\"].*['\"]" | \
+            tr --delete "'" | tr --delete '"')
+
+          echo "DGPSI_FOLDER_NAME=${dgpsi_version_code}" | tee -a $GITHUB_ENV
       
       ## https://github.com/docker/setup-qemu-action
       #- name: Set up QEMU
