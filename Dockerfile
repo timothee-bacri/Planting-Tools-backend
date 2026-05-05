@@ -72,6 +72,7 @@ RUN rm -f "${CONDA_PATH}/miniconda.sh"
 
 # Ensure pip is available in that conda environment
 ENV PATH="${CONDA_PATH}/bin:${PATH}"
+ARG CONDA_PLUGINS_AUTO_ACCEPT_TOS="yes"
 RUN "${CONDA_PATH}/bin/conda" create -y \
     -p "${CONDA_ENV_PATH}" \
     python \
