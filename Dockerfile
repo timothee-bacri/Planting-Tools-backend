@@ -47,8 +47,8 @@ RUN apt-get update && \
     libsecret-1-dev \
     # For knitr, markdown
     pandoc \
-    # For dependencies (s2, fs)
-    libabsl-dev libuv1-dev \
+    # For dependencies (s2, fs, rgl)
+    libabsl-dev libuv1-dev texlive \
     # Generate SSH key for usage with git
     openssh-client && \
     apt-get -y upgrade && \
