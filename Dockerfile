@@ -26,7 +26,7 @@ RUN apt-get update && \
     # For RRembo, it depends on eaf
     libgsl-dev libglu1-mesa \
     # For dgpsi
-    libtiff-dev libjpeg-dev git python3-pip \
+    libtiff-dev libjpeg-dev git \
     # needed to install dgpsi via devtools for some reason
     libtool automake \
     # For gifsky
@@ -59,6 +59,10 @@ RUN mkdir -p "${CONDA_PATH}"
 RUN arch=$(uname -m) && wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${arch}.sh" -O "${CONDA_PATH}/miniconda.sh"
 RUN bash "${CONDA_PATH}/miniconda.sh" -b -u -p "${CONDA_PATH}"
 RUN rm -f "${CONDA_PATH}/miniconda.sh"
+
+# Ensure pip is available
+ENV PATH="${CONDA_PATH}/bin:${PATH}"
+RUN "${CONDA_PATH}/bin/python" -m ensurepip --upgrade
 
 COPY DESCRIPTION_* .
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly by updating DESCRIPTION
