@@ -56,6 +56,10 @@ RUN apt-get update && \
     apt-get -y autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
+# Install rust toolchain for gifsky (https://rustup.rs)
+# -s -- --no-modify-path -y automates rustup installation without prompts (what `pak` does automatically)
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
+
 # Miniconda https://docs.anaconda.com/miniconda/
 RUN mkdir -p "${CONDA_PATH}"
 RUN arch=$(uname -m) && wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${arch}.sh" -O "${CONDA_PATH}/miniconda.sh"
