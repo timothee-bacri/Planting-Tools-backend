@@ -6,8 +6,12 @@ LABEL org.opencontainers.image.source=https://github.com/timothee-bacri/Planting
 
 ARG CONDA_PATH=/shared/miniconda
 
-# Set dgpsi path version, BUILD ARG
-# curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | grep "env_name *<-" | grep --invert-match "^\s*#" | grep --only-matching --perl-regexp 'dgp.*\d'
+# Set dgpsi path version as a BUILD ARG
+# curl -sSL https://raw.githubusercontent.com/mingdeyu/dgpsi-R/refs/heads/master/R/initi_py.R | \
+#            sed --silent '/devel/,$p' | \
+#            grep --max-count 1 --only-matching --perl-regexp '^((?!#).)*env_name.*$' | \
+#            grep --only-matching "['\"].*['\"]" | \
+#            tr --delete "'" | tr --delete '"'
 ARG DGPSI_FOLDER_NAME
 
 ARG CONDA_ENV_PATH=${CONDA_PATH}/envs/${DGPSI_FOLDER_NAME}
@@ -66,9 +70,12 @@ RUN arch=$(uname -m) && wget "https://repo.anaconda.com/miniconda/Miniconda3-lat
 RUN bash "${CONDA_PATH}/miniconda.sh" -b -u -p "${CONDA_PATH}"
 RUN rm -f "${CONDA_PATH}/miniconda.sh"
 
-# Ensure pip is available
+# Ensure pip is available in that conda environment
 ENV PATH="${CONDA_PATH}/bin:${PATH}"
-RUN "${CONDA_PATH}/bin/python" -m ensurepip --upgrade
+RUN "${CONDA_PATH}/bin/conda" create -y \
+    -p "${CONDA_ENV_PATH}" \
+    python \
+    pip
 
 COPY DESCRIPTION_* .
 # Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly by updating DESCRIPTION
