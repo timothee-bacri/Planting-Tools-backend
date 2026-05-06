@@ -13,7 +13,7 @@ ARG MINICONDA_PATH=/shared/miniconda
 #            grep --only-matching "['\"].*['\"]" | \
 #            tr --delete "'" | tr --delete '"'
 ARG DGPSI_FOLDER_NAME
-#ARG CONDA_ENV_PATH=${MINICONDA_PATH}/envs/${DGPSI_FOLDER_NAME}
+# ARG CONDA_ENV_PATH=${MINICONDA_PATH}/envs/${DGPSI_FOLDER_NAME}
 
 ARG DEBIAN_FRONTEND=noninteractive
 
