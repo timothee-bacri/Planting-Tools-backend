@@ -85,9 +85,8 @@ RUN source "${MINIFORGE_PATH}/etc/profile.d/conda.sh"
 #    pip
 
 COPY DESCRIPTION_* .
-# Packages update once in a while. We (arbitrarily) update them by invalidating the cache monthly by updating DESCRIPTION
-RUN date +%Y-%m && \
-    Rscript -e "install.packages('pak')" && \
+# Install packages in DESCRIPTION files
+RUN Rscript -e "install.packages('pak')" && \
     # Rscript -e "pak::pkg_install('github::mingdeyu/dgpsi-R')" && \
     for description_file in DESCRIPTION_*; do \
         echo "NOW WORKING WITH THE DESCRIPTION FILE WITH NAME $description_file" && \
