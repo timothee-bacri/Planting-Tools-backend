@@ -65,10 +65,10 @@ RUN apt-get update && \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
 
 # Miniforge is now the default used by dgpsi (https://github.com/conda-forge/miniforge#unix-like-platforms-macos-linux--wsl)
-RUN mkdir -p "${MINIFORGE_PATH}"
-RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O "${MINIFORGE_PATH}/miniforge.sh"
-RUN bash "${MINIFORGE_PATH}/miniforge.sh" -b -p "${MINIFORGE_PATH}"
-RUN rm -f "${MINIFORGE_PATH}/miniforge.sh"
+RUN mkdir "/shared"
+RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O "/tmp/miniforge.sh"
+RUN bash "/tmp/miniforge.sh" -b -p "${MINIFORGE_PATH}"
+RUN rm -f "/tmp/miniforge.sh"
 # Debug ---
 RUN cat "${MINIFORGE_PATH}/etc/profile.d/conda.sh"
 RUN apt update && apt install -y tree
