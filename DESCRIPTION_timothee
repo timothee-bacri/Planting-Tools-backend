@@ -76,6 +76,8 @@ Imports:
 	webshot,
 	zipfR
 Remotes:
-	dgpsi=git::https://github.com/mingdeyu/dgpsi-R.git,
+	dgpsi=git::https://github.com/timothee-bacri/dgpsi-R.git@patch-2,
 	RRembo=git::https://github.com/mbinois/RRembo.git,
 	DiceOptim=url::https://cran.r-project.org/src/contrib/Archive/DiceOptim/DiceOptim_2.1.1.tar.gz
+Comment:
+	replace with dgpsi=git::https://github.com/mingdeyu/dgpsi-R.git when https://github.com/mingdeyu/dgpsi-R/pull/10 is merged
