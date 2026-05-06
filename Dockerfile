@@ -74,7 +74,8 @@ RUN cat "${MINIFORGE_PATH}/etc/profile.d/conda.sh"
 RUN apt update && apt install -y tree
 RUN tree "${MINIFORGE_PATH}"
 # --- Debug
-RUN source "${MINIFORGE_PATH}/etc/profile.d/conda.sh"
+# source is only available in bash, not sh. Alternative: `. ${MINIFORGE_PATH}/etc/profile.d/conda.sh`
+RUN ["/bin/bash", "-c", "source ${MINIFORGE_PATH}/etc/profile.d/conda.sh"]
 
 ## Ensure pip is available in that conda environment
 #ENV PATH="${MINIFORGE_PATH}/bin:${PATH}"
