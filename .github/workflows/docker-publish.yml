@@ -38,7 +38,7 @@ jobs:
   #   
   #   steps:
   #     - name: Checkout repository
-  #       uses: actions/checkout@v6
+  #       uses: actions/checkout@v7
   #       with:
   #         repository: https://github.com/rstudio/shiny-server.git
   #         ref: master
@@ -88,7 +88,7 @@ jobs:
     steps:
       
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       
       - name: Set dgpsi folder name
         run: |
